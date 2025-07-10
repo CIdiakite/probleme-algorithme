@@ -1,0 +1,56 @@
+ALGORITHME somme_elements_distincts
+VAR
+    ensemble1, ensemble2 : TABLEAU D'ENTIERS
+    i, j, somme : ENTIER
+    trouvé : BOOLEAN
+DEBUT
+    // Initialisation
+    somme ← 0
+
+    // Lecture des deux ensembles
+    ÉCRIRE "Entrer la taille du premier ensemble :"
+    LIRE n
+    DÉCLARER ensemble1[n]
+    ÉCRIRE "Entrer les éléments du premier ensemble :"
+    POUR i DE 0 À n-1 FAIRE
+        LIRE ensemble1[i]
+    FIN POUR
+
+    ÉCRIRE "Entrer la taille du deuxième ensemble :"
+    LIRE m
+    DÉCLARER ensemble2[m]
+    ÉCRIRE "Entrer les éléments du deuxième ensemble :"
+    POUR i DE 0 À m-1 FAIRE
+        LIRE ensemble2[i]
+    FIN POUR
+
+    // Ajouter les éléments uniques de ensemble1
+    POUR i DE 0 À n-1 FAIRE
+        trouvé ← FAUX
+        POUR j DE 0 À m-1 FAIRE
+            SI ensemble1[i] = ensemble2[j] ALORS
+                trouvé ← VRAI
+                SORTIR DE LA BOUCLE
+            FIN SI
+        FIN POUR
+        SI NON trouvé ALORS
+            somme ← somme + ensemble1[i]
+        FIN SI
+    FIN POUR
+
+    // Ajouter les éléments uniques de ensemble2
+    POUR i DE 0 À m-1 FAIRE
+        trouvé ← FAUX
+        POUR j DE 0 À n-1 FAIRE
+            SI ensemble2[i] = ensemble1[j] ALORS
+                trouvé ← VRAI
+                SORTIR DE LA BOUCLE
+            FIN SI
+        FIN POUR
+        SI NON trouvé ALORS
+            somme ← somme + ensemble2[i]
+        FIN SI
+    FIN POUR
+
+    ÉCRIRE "La somme des éléments distincts est : ", somme
+FIN

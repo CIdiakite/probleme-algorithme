@@ -1,0 +1,47 @@
+PROCÉDURE dot_product(v1 : TABLEAU D'ENTIERS, v2 : TABLEAU D'ENTIERS, n : ENTIER, VAR ps : ENTIER)
+VAR
+    i : ENTIER
+DÉBUT
+    ps ← 0
+    POUR i DE 0 À n - 1 FAIRE
+        ps ← ps + v1[i] * v2[i]
+    FIN POUR
+FIN_PROCÉDURE
+
+
+
+ALGORITHME test_orthogonalité_vecteurs
+VAR
+    v1, v2 : TABLEAU D'ENTIERS
+    i, j, n, t, ps : ENTIER
+DEBUT
+    ÉCRIRE "Entrer la taille des vecteurs : "
+    LIRE n
+
+    ÉCRIRE "Entrer le nombre de couples de vecteurs : "
+    LIRE t
+
+    POUR i DE 1 À t FAIRE
+        DÉCLARER v1[n], v2[n]
+
+        ÉCRIRE "Couple ", i, ":"
+        ÉCRIRE "Vecteur 1 :"
+        POUR j DE 0 À n - 1 FAIRE
+            LIRE v1[j]
+        FIN POUR
+
+        ÉCRIRE "Vecteur 2 :"
+        POUR j DE 0 À n - 1 FAIRE
+            LIRE v2[j]
+        FIN POUR
+
+        // Appel à la procédure
+        APPELER dot_product(v1, v2, n, ps)
+
+        SI ps = 0 ALORS
+            ÉCRIRE "Les vecteurs sont orthogonaux."
+        SINON
+            ÉCRIRE "Les vecteurs NE sont PAS orthogonaux."
+        FIN SI
+    FIN POUR
+FIN

@@ -1,0 +1,50 @@
+ALGORITHME somme_des_elements_distincts
+VAR
+    tab1, tab2 : TABLEAU D'ENTIERS
+    fusion : TABLEAU D'ENTIERS
+    i, j, somme : ENTIER
+    estCommun : BOOLEEN
+
+DEBUT
+    // Initialisation des tableaux
+    tab1 ← [3, 1, 7, 9]
+    tab2 ← [2, 4, 1, 9, 3]
+    somme ← 0
+
+    // Fusion des deux tableaux
+    fusion ← tab1 + tab2
+
+    POUR i DE 0 À longueur(fusion) - 1 FAIRE
+        estCommun ← FAUX
+        // Vérifier si l’élément est présent dans les deux tableaux
+        SI (fusion[i] DANS tab1 ET fusion[i] DANS tab2) ALORS
+            // Compter le nombre d'occurrence
+            compteur1 ← 0
+            compteur2 ← 0
+
+            POUR j DE 0 À longueur(tab1) - 1 FAIRE
+                SI tab1[j] = fusion[i] ALORS
+                    compteur1 ← compteur1 + 1
+                FIN SI
+            FIN POUR
+
+            POUR j DE 0 À longueur(tab2) - 1 FAIRE
+                SI tab2[j] = fusion[i] ALORS
+                    compteur2 ← compteur2 + 1
+                FIN SI
+            FIN POUR
+
+            // Si l'élément est présent au moins une fois dans chaque
+            SI compteur1 > 0 ET compteur2 > 0 ALORS
+                estCommun ← VRAI
+            FIN SI
+        FIN SI
+
+        // Si l'élément n’est pas commun, et n’a pas encore été ajouté
+        SI estCommun = FAUX ET fusion[i] NON DEJA PRIS ALORS
+            somme ← somme + fusion[i]
+        FIN SI
+    FIN POUR
+
+    AFFICHER "Somme des éléments distincts : ", somme
+FIN
